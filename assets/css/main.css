@@ -2363,8 +2363,7 @@ section,
   padding: 100px 0;
   background: #0084ff; /* Bright Blue */
   position: relative;
-  overflow: hidden;
-  border-radius: 20px;
+  overflow: clip;
 }
 
 .metrics-showcase::before {
