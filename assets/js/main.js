@@ -342,3 +342,83 @@
   // Initialize testimonial enhancements after DOM is loaded
   document.addEventListener("DOMContentLoaded", enhanceTestimonialAnimations);
 })();
+
+/*
+* Video Testimonials
+*/
+document.addEventListener('DOMContentLoaded', () => {
+  const wrappers = document.querySelectorAll('[data-video]');
+  let swiperInstance = null;
+
+  // Function to get swiper instance
+  const getSwiper = () => {
+    if (swiperInstance) return swiperInstance;
+    const swiperEl = document.querySelector('.video-testimonial-swiper');
+    if (swiperEl && swiperEl.swiper) {
+      swiperInstance = swiperEl.swiper;
+      return swiperInstance;
+    }
+    return null;
+  };
+
+  wrappers.forEach(wrapper => {
+    const video = wrapper.querySelector('video');
+    const btn = wrapper.querySelector('.video-control-btn');
+    const icon = btn ? btn.querySelector('i') : null;
+
+    if (!btn || !video) return;
+
+    // ▶ PLAY/PAUSE VIDEO
+    btn.addEventListener('click', () => {
+      const swiper = getSwiper();
+      if (video.paused) {
+
+        // Pause all other videos
+        wrappers.forEach(w => {
+          const v = w.querySelector('video');
+          const i = w.querySelector('.video-control-btn i');
+          if (v && v !== video) {
+            v.pause();
+            v.muted = true;
+            if (i) i.className = 'bi bi-play-fill';
+            w.classList.remove('is-playing');
+          }
+        });
+
+        // STOP carousel when video starts playing
+        if (swiper && swiper.autoplay) {
+          swiper.autoplay.stop();
+        }
+
+        video.muted = false;
+        video.play();
+        if (icon) icon.className = 'bi bi-pause-fill';
+        wrapper.classList.add('is-playing');
+
+      } else {
+
+        // ⏸ PAUSE VIDEO
+        video.pause();
+        video.muted = true;
+        if (icon) icon.className = 'bi bi-play-fill';
+        wrapper.classList.remove('is-playing');
+
+        // ▶ RESUME carousel when video is paused
+        if (swiper && swiper.autoplay) {
+          swiper.autoplay.start();
+        }
+      }
+    });
+
+    // ▶ WHEN VIDEO ENDS → RESUME CAROUSEL
+    video.addEventListener('ended', () => {
+      wrapper.classList.remove('is-playing');
+      if (icon) icon.className = 'bi bi-play-fill';
+
+      const swiper = getSwiper();
+      if (swiper && swiper.autoplay) {
+        swiper.autoplay.start();
+      }
+    });
+  });
+});

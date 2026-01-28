@@ -21,22 +21,34 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #212529; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #2d465e; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #0d83fd; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --background-color: #ffffff;
+  /* Background color for the entire website, including individual sections */
+  --default-color: #212529;
+  /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #2d465e;
+  /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #0d83fd;
+  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff;
+  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff;
+  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #212529; /* The default color of the main navmenu links */
-  --nav-hover-color: #0d83fd; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #212529; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #0d83fd; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #212529;
+  /* The default color of the main navmenu links */
+  --nav-hover-color: #0d83fd;
+  /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #ffffff;
+  /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ffffff;
+  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #212529;
+  /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #0d83fd;
+  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -100,6 +112,7 @@ h6 {
   margin-bottom: 24px;
   font-weight: 600;
 }
+
 .sitename {
   display: flex;
   align-items: center;
@@ -107,6 +120,7 @@ h6 {
   font-weight: 700 !important;
   font-size: 24px !important;
 }
+
 .php-email-form .sent-message {
   display: none;
   color: #ffffff;
@@ -277,7 +291,7 @@ h6 {
     padding-right: 0;
   }
 
-  .navmenu li:hover > a,
+  .navmenu li:hover>a,
   .navmenu .active,
   .navmenu .active:focus {
     color: var(--nav-hover-color);
@@ -316,11 +330,11 @@ h6 {
 
   .navmenu .dropdown ul a:hover,
   .navmenu .dropdown ul .active:hover,
-  .navmenu .dropdown ul li:hover > a {
+  .navmenu .dropdown ul li:hover>a {
     color: var(--nav-dropdown-hover-color);
   }
 
-  .navmenu .dropdown:hover > ul {
+  .navmenu .dropdown:hover>ul {
     opacity: 1;
     top: 100%;
     visibility: visible;
@@ -332,7 +346,7 @@ h6 {
     visibility: hidden;
   }
 
-  .navmenu .dropdown .dropdown:hover > ul {
+  .navmenu .dropdown .dropdown:hover>ul {
     opacity: 1;
     top: 0;
     left: -100%;
@@ -435,7 +449,7 @@ h6 {
     background-color: rgba(33, 37, 41, 0.1);
   }
 
-  .navmenu .dropdown > .dropdown-active {
+  .navmenu .dropdown>.dropdown-active {
     display: block;
     background-color: rgba(33, 37, 41, 0.03);
   }
@@ -462,7 +476,7 @@ h6 {
     transition: 0.3s;
   }
 
-  .mobile-nav-active .navmenu > ul {
+  .mobile-nav-active .navmenu>ul {
     display: block;
   }
 }
@@ -476,8 +490,7 @@ h6 {
   font-size: 14px;
   position: relative;
 }
-.footer-all-link {
-}
+
 
 .footer .footer-top {
   padding-top: 50px;
@@ -574,8 +587,7 @@ h6 {
 
 .footer .copyright {
   padding: 25px 0;
-  border-top: 1px solid
-    color-mix(in srgb, var(--default-color), transparent 90%);
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .footer .copyright p {
@@ -658,11 +670,11 @@ h6 {
   font-weight: 400;
 }
 
-.page-title .breadcrumbs ol li + li {
+.page-title .breadcrumbs ol li+li {
   padding-left: 10px;
 }
 
-.page-title .breadcrumbs ol li + li::before {
+.page-title .breadcrumbs ol li+li::before {
   content: "/";
   display: inline-block;
   padding-right: 10px;
@@ -682,6 +694,7 @@ section,
 }
 
 @media (max-width: 1199px) {
+
   section,
   .section {
     scroll-margin-top: 66px;
@@ -728,12 +741,10 @@ section,
 .hero {
   position: relative;
   padding-top: 160px;
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--accent-color), transparent 95%) 50%,
-    color-mix(in srgb, var(--accent-color), transparent 98%) 25%,
-    transparent 50%
-  );
+  background: linear-gradient(135deg,
+      color-mix(in srgb, var(--accent-color), transparent 95%) 50%,
+      color-mix(in srgb, var(--accent-color), transparent 98%) 25%,
+      transparent 50%);
 }
 
 .hero::before {
@@ -743,11 +754,9 @@ section,
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-    circle at 90% 10%,
-    color-mix(in srgb, var(--accent-color), transparent 92%),
-    transparent 40%
-  );
+  background: radial-gradient(circle at 90% 10%,
+      color-mix(in srgb, var(--accent-color), transparent 92%),
+      transparent 40%);
   pointer-events: none;
 }
 
@@ -1520,6 +1529,7 @@ section,
 }
 
 @keyframes shapes-float {
+
   0%,
   100% {
     transform: scale(0.8) rotate(45deg) translateY(0);
@@ -1575,19 +1585,78 @@ section,
 /*--------------------------------------------------------------
 # Clients Section
 --------------------------------------------------------------*/
-.clients .swiper-slide img {
-  opacity: 0.5;
-  transition: 0.3s;
-  filter: grayscale(100);
+.clients {
+  background-color: var(--surface-color);
 }
 
-.clients .swiper-slide img:hover {
-  filter: none;
+.clients .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.clients .client-logo {
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: none;
+  width: 100%;
+  height: 180px;
+  /* Further increased height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+.clients .client-logo:hover {
+  transform: translateY(-8px);
+}
+
+.clients .client-logo img {
+  opacity: 0.8;
+  transition: 0.5s ease;
+  width: 100%;
+  height: 140px;
+  /* Larger fixed height for uniformity */
+  object-fit: contain;
+  /* Ensures logos aren't distorted while staying within bounds */
+  /* Clean Black & White */
+  filter: grayscale(100%);
+}
+
+.clients .client-logo img.sicksyx-logo {
+  transform: scale(1.3);
+  /* Specifically scale up SickSyx as it has more whitespace/smaller aspect */
+}
+
+.clients .client-logo img.houseofpehr-logo,
+.clients .client-logo img.kull-logo {
+  transform: scale(0.75);
+  /* Slightly smaller to balance with other logos */
+}
+
+.clients .client-logo:hover img.houseofpehr-logo,
+.clients .client-logo:hover img.kull-logo {
+  transform: scale(0.95);
+}
+
+.clients .client-logo:hover img.sicksyx-logo {
+  transform: scale(1.4);
+}
+
+.clients .client-logo:hover img {
+  /* Dynamic Reveal */
+  filter: grayscale(0%);
   opacity: 1;
+  transform: scale(1.1);
 }
 
 .clients .swiper-wrapper {
   height: auto;
+  align-items: center;
 }
 
 .clients .swiper-pagination {
@@ -1605,6 +1674,11 @@ section,
 .clients .swiper-pagination .swiper-pagination-bullet-active {
   background-color: var(--accent-color);
 }
+
+.swiper {
+  padding-bottom: 40px;
+}
+
 
 /*--------------------------------------------------------------
 # Testimonials Section
@@ -2208,11 +2282,9 @@ section,
 }
 
 .contact .contact-form .btn:hover {
-  background-color: color-mix(
-    in srgb,
-    var(--accent-color),
-    var(--contrast-color) 20%
-  );
+  background-color: color-mix(in srgb,
+      var(--accent-color),
+      var(--contrast-color) 20%);
 }
 
 /*--------------------------------------------------------------
@@ -2224,15 +2296,14 @@ section,
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
 }
 
-.service-details .service-box + .service-box {
+.service-details .service-box+.service-box {
   margin-top: 30px;
 }
 
 .service-details .service-box h4 {
   font-size: 20px;
   font-weight: 700;
-  border-bottom: 2px solid
-    color-mix(in srgb, var(--default-color), transparent 92%);
+  border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 92%);
   padding-bottom: 15px;
   margin-bottom: 15px;
 }
@@ -2281,8 +2352,7 @@ section,
   align-items: center;
   padding: 10px 0;
   transition: 0.3s;
-  border-top: 1px solid
-    color-mix(in srgb, var(--default-color), transparent 90%);
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .service-details .download-catalog a:first-child {
@@ -2354,14 +2424,12 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
-}
 
 /* Modern Stats Section Styles */
 .metrics-showcase {
   padding: 100px 0;
-  background: #0084ff; /* Bright Blue */
+  background: #0084ff;
+  /* Bright Blue */
   position: relative;
   overflow: clip;
 }
@@ -2370,8 +2438,7 @@ section,
   content: "";
   position: absolute;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='2' fill='%23ffffff0f' /%3E%3C/svg%3E")
-    repeat;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='2' fill='%23ffffff0f' /%3E%3C/svg%3E") repeat;
   opacity: 0.15;
   z-index: 0;
 }
@@ -2494,5 +2561,281 @@ section,
   .metric-icon {
     width: 60px;
     height: 60px;
+  }
+}
+
+/* ============================= */
+/* Video Testimonials – Base */
+/* ============================= */
+
+.video-testimonials-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-testimonial-swiper .testimonial-item {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  position: relative;
+  overflow: visible;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Gradient Overlay for Text Legibility */
+.video-portrait-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 60%,
+    rgba(0, 0, 0, 0.4) 80%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 5;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.video-portrait-wrapper.is-playing::after {
+  opacity: 0.4;
+}
+
+.video-testimonial-swiper .testimonial-item h3 {
+  position: absolute;
+  bottom: 45px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  color: #fff;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  margin: 0 !important;
+  text-align: center;
+}
+
+.video-testimonial-swiper .testimonial-item h4 {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  margin: 0 !important;
+  text-align: center;
+}
+
+/* Taller portrait video container */
+.video-portrait-wrapper {
+  aspect-ratio: 9 / 16;
+  width: 100%;
+  position: relative;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  max-height: 480px;
+}
+
+/* Video itself */
+.video-portrait-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Glassmorphism Play Button */
+.video-control-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 15;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.video-control-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translate(-50%, -50%) scale(1.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Prevent icon click issues */
+.video-control-btn i {
+  pointer-events: none;
+  margin-left: 4px; /* offset for visual center of play icon */
+}
+
+/* Hide button while video is playing except on hover */
+.video-portrait-wrapper.is-playing .video-control-btn {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.video-portrait-wrapper.is-playing:hover .video-control-btn {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.video-testimonial-swiper {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 0 120px 0;
+  overflow: hidden !important;
+  position: relative;
+}
+
+/* Each slide */
+.video-testimonial-swiper .swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  opacity: 0.3;
+  transform: scale(0.85);
+  filter: blur(2px);
+}
+
+/* Active slide spotlight */
+.video-testimonial-swiper .swiper-slide-active {
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+  z-index: 100 !important;
+  filter: blur(0);
+}
+
+.video-testimonial-swiper .swiper-slide-active .video-portrait-wrapper {
+  border-color: #0084ff;
+  box-shadow: 0 30px 60px rgba(0, 132, 255, 0.3), 0 0 100px rgba(0, 132, 255, 0.1);
+}
+
+.video-testimonial-swiper .testimonial-item {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* Side slides */
+.video-testimonial-swiper .swiper-slide-prev,
+.video-testimonial-swiper .swiper-slide-next {
+  opacity: 0.7;
+  transform: scale(0.95);
+  filter: blur(1px);
+}
+
+/* Background Spotlight Glow */
+.video-testimonial-swiper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(0, 132, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Navigation buttons polish */
+.video-testimonial-swiper .swiper-button-prev,
+.video-testimonial-swiper .swiper-button-next {
+  color: #fff;
+  background: #0084ff;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(0, 132, 255, 0.3);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 110;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 4px solid #fff;
+}
+
+.video-testimonial-swiper .swiper-button-prev:hover,
+.video-testimonial-swiper .swiper-button-next:hover {
+  background: #006ee6;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 15px 30px rgba(0, 132, 255, 0.4);
+}
+
+.video-testimonial-swiper .swiper-button-prev:after,
+.video-testimonial-swiper .swiper-button-next:after {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+/* Pagination Polish */
+.video-testimonial-swiper .swiper-pagination {
+  bottom: 40px !important;
+}
+
+.video-testimonial-swiper .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #0084ff;
+  opacity: 0.3;
+  margin: 0 6px !important;
+  transition: all 0.3s ease;
+}
+
+.video-testimonial-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 30px;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .video-testimonial-swiper {
+    padding: 20px 0 80px 0;
+  }
+  
+  .video-testimonial-swiper .swiper-slide-active {
+    transform: scale(1.05) !important;
+  }
+  
+  .video-testimonial-swiper .testimonial-item {
+    max-width: 240px;
+  }
+  
+  .video-testimonial-swiper .swiper-button-prev,
+  .video-testimonial-swiper .swiper-button-next {
+    display: none;
   }
 }
