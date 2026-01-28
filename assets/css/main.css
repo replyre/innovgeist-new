@@ -2579,33 +2579,63 @@ section,
   background: transparent;
   box-shadow: none;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.video-testimonial-swiper .testimonial-item h3,
-.video-testimonial-swiper .testimonial-item h4 {
+/* Gradient Overlay for Text Legibility */
+.video-portrait-wrapper::after {
+  content: "";
   position: absolute;
-  bottom: 20px;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 60%,
+    rgba(0, 0, 0, 0.4) 80%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 5;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.video-portrait-wrapper.is-playing::after {
+  opacity: 0.4;
+}
+
+.video-testimonial-swiper .testimonial-item h3 {
+  position: absolute;
+  bottom: 45px;
   left: 0;
   right: 0;
   z-index: 10;
   color: #fff;
-  opacity: 0;
-  transition: all 0.3s ease;
-  pointer-events: none;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   margin: 0 !important;
   text-align: center;
 }
 
 .video-testimonial-swiper .testimonial-item h4 {
-  bottom: 5px;
-}
-
-.video-testimonial-swiper .testimonial-item:hover h3,
-.video-testimonial-swiper .testimonial-item:hover h4 {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  color: rgba(255, 255, 255, 0.8);
   opacity: 1;
-  transform: translateY(-10px);
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  margin: 0 !important;
+  text-align: center;
 }
 
 /* Taller portrait video container */
@@ -2613,13 +2643,13 @@ section,
   aspect-ratio: 9 / 16;
   width: 100%;
   position: relative;
-  background: var(--contrast-color);
-  border: 3px solid transparent;
-  border-radius: 20px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  transition: all 0.4s ease;
-  max-height: 460px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  max-height: 480px;
 }
 
 /* Video itself */
@@ -2628,50 +2658,62 @@ section,
   height: 100%;
   object-fit: cover;
   display: block;
-  overflow: auto;
 }
 
+/* Glassmorphism Play Button */
 .video-control-btn {
   position: absolute;
-  inset: 0;
-  /* full overlay */
-  border: none;
-  background: rgba(0, 0, 0, 0.25);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #fff;
-  font-size: 64px;
+  font-size: 32px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: opacity 0.25s ease, background 0.25s ease;
+  z-index: 15;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .video-control-btn:hover {
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.25);
+  transform: translate(-50%, -50%) scale(1.1);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Prevent icon click issues */
 .video-control-btn i {
   pointer-events: none;
+  margin-left: 4px; /* offset for visual center of play icon */
 }
 
-/* Hide button while video is playing */
+/* Hide button while video is playing except on hover */
 .video-portrait-wrapper.is-playing .video-control-btn {
   opacity: 0;
   pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.8);
 }
 
-/* Show button on hover when playing */
 .video-portrait-wrapper.is-playing:hover .video-control-btn {
   opacity: 1;
   pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .video-testimonial-swiper {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 60px 0 100px 0;
+  padding: 80px 0 120px 0;
   overflow: hidden !important;
   position: relative;
 }
@@ -2682,54 +2724,38 @@ section,
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   cursor: pointer;
-  opacity: 0.5;
-  /* Default desktop width */
+  opacity: 0.3;
+  transform: scale(0.85);
+  filter: blur(2px);
 }
 
-/* Linear 'one by one' focus state */
+/* Active slide spotlight */
 .video-testimonial-swiper .swiper-slide-active {
   opacity: 1 !important;
-  transform: scale(1.08) !important;
-  z-index: 10 !important;
+  transform: scale(1.1) !important;
+  z-index: 100 !important;
+  filter: blur(0);
+}
+
+.video-testimonial-swiper .swiper-slide-active .video-portrait-wrapper {
+  border-color: #0084ff;
+  box-shadow: 0 30px 60px rgba(0, 132, 255, 0.3), 0 0 100px rgba(0, 132, 255, 0.1);
+}
+
+.video-testimonial-swiper .testimonial-item {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
 }
 
 /* Side slides */
 .video-testimonial-swiper .swiper-slide-prev,
 .video-testimonial-swiper .swiper-slide-next {
-  opacity: 0.8;
+  opacity: 0.7;
   transform: scale(0.95);
-}
-
-
- .video-testimonial-swiper .testimonial-item {
-  width: 100%;
-  max-width: 260px;
-  /* Constrain width to keep the 9:16 portrait look clean */
-  margin: 0 auto;
-}
-
-
-/* Center (active) slide spotlight */
-.video-testimonial-swiper .swiper-slide-active {
-  opacity: 1 !important;
-  filter: none !important;
-  z-index: 10 !important;
-}
-
-.video-testimonial-swiper .swiper-slide-active .video-portrait-wrapper {
-  border-color: #0084ff;
-  box-shadow: 0 0 50px rgba(0, 132, 255, 0.4), 0 20px 60px rgba(0, 0, 0, 0.3);
-  transform: scale(1.05);
-  /* Slight pop for the active one */
-}
-
-/* Side slides (handled by coverflow mostly, but we add some polish) */
-.video-testimonial-swiper .swiper-slide-next,
-.video-testimonial-swiper .swiper-slide-prev {
-  opacity: 0.7 !important;
-  filter: blur(1px) grayscale(20%) !important;
+  filter: blur(1px);
 }
 
 /* Background Spotlight Glow */
@@ -2739,133 +2765,77 @@ section,
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(0, 132, 255, 0.1) 0%, transparent 60%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(0, 132, 255, 0.08) 0%, transparent 70%);
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
 
-/* Fix for navigation buttons being outside viewport */
+/* Navigation buttons polish */
 .video-testimonial-swiper .swiper-button-prev,
 .video-testimonial-swiper .swiper-button-next {
-  color: var(--accent-color);
-  background: #fff;
-  width: 50px;
-  height: 50px;
+  color: #fff;
+  background: #0084ff;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 132, 255, 0.3);
   top: 50%;
   transform: translateY(-50%);
-  z-index: 20;
-  transition: all 0.3s ease;
+  z-index: 110;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 4px solid #fff;
 }
 
 .video-testimonial-swiper .swiper-button-prev:hover,
 .video-testimonial-swiper .swiper-button-next:hover {
-  background: var(--accent-color);
-  color: #fff;
-}
-
-.video-testimonial-swiper .swiper-button-prev {
-  left: 10px;
-}
-
-.video-testimonial-swiper .swiper-button-next {
-  right: 10px;
-}
-
-@media (max-width: 1400px) {
-  .video-testimonial-swiper .swiper-button-prev {
-    left: 20px;
-  }
-
-  .video-testimonial-swiper .swiper-button-next {
-    right: 20px;
-  }
-}
-
-.video-testimonial-swiper .swiper-pagination {
-  bottom: 20px !important;
+  background: #006ee6;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 15px 30px rgba(0, 132, 255, 0.4);
 }
 
 .video-testimonial-swiper .swiper-button-prev:after,
 .video-testimonial-swiper .swiper-button-next:after {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 900;
 }
 
-@media (max-width: 1300px) {
-  .video-testimonial-swiper .swiper-button-prev {
-    left: 20px;
-  }
+/* Pagination Polish */
+.video-testimonial-swiper .swiper-pagination {
+  bottom: 40px !important;
+}
 
-  .video-testimonial-swiper .swiper-button-next {
-    right: 20px;
-  }
+.video-testimonial-swiper .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #0084ff;
+  opacity: 0.3;
+  margin: 0 6px !important;
+  transition: all 0.3s ease;
+}
+
+.video-testimonial-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 30px;
+  border-radius: 12px;
 }
 
 @media (max-width: 768px) {
   .video-testimonial-swiper {
-    padding: 20px 0;
+    padding: 20px 0 80px 0;
   }
-
+  
+  .video-testimonial-swiper .swiper-slide-active {
+    transform: scale(1.05) !important;
+  }
+  
+  .video-testimonial-swiper .testimonial-item {
+    max-width: 240px;
+  }
+  
   .video-testimonial-swiper .swiper-button-prev,
   .video-testimonial-swiper .swiper-button-next {
     display: none;
-    /* Hide buttons on small screens to save space */
   }
-}
-/* Fade + slide up */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Scale in video cards */
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.85);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.video-testimonial-swiper {
-  animation: fadeUp 0.8s ease-out both;
-}
-
-
-/* Stagger effect */
-.video-testimonial-swiper .swiper-slide:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.video-testimonial-swiper .swiper-slide:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.video-testimonial-swiper .swiper-slide:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.swiper {
-  overflow: hidden;
-}
-
-.video-testimonial-swiper .swiper-slide-active .video-portrait-wrapper {
-  border-color: #0084ff;
-  box-shadow: 0 0 30px rgba(0, 132, 255, 0.4);
-  transform: scale(1.05);
 }
